@@ -1,20 +1,18 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'; 
+import AppNavigator from './src/navigation/AppNavigator';
+import { VoiceSettingsProvider } from './src/contexts/VoiceSettingsContext'; // Asegúrate de importar el proveedor
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <VoiceSettingsProvider> {/* Envuelve el AppNavigator con el proveedor */}
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <AppNavigator />
+      </NavigationContainer>
+    </VoiceSettingsProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
